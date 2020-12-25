@@ -11,7 +11,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Hello DevC Marrakech
+          Hello DevC Marrakech - 2020
         </h1>
 
       </main>
