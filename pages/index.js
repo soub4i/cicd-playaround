@@ -17,7 +17,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Made with love 2020
+        Made with love {new Date().getFullYear()}
       </footer>
     </div>
   )
