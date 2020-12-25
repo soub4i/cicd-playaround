@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "serve": "pm2 stop next-app && pm2 start npm --name next-app -- start"
+    "serve": "pm2 stop all && pm2 start npm --name next-app -- start"
 
   },
   "dependencies": {
