@@ -21,7 +21,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build
-      # - run: npm test
+
+    test:
+      runs-on: ubuntu-20.04
+      steps:
+        - run: echo "This is test job"
+
+  deploy:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
       - name: Copying files to server
         uses: appleboy/ssh-action@v0.1.2
         with:
