@@ -7,9 +7,7 @@ on:
     branches: [main]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,15 +15,15 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build
-    # - run: npm test
-    - name: Copying files to server
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build
+      # - run: npm test
+      - name: Copying files to server
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{ secrets.REMOTE_HOST }}
