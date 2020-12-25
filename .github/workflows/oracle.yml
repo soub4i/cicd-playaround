@@ -29,13 +29,12 @@ jobs:
 
   deploy:
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [14.x]
-
+    # strategy:
+    #   matrix:
+    #     node-version: [14.x]
     steps:
       - name: Copying files to server
-        uses: appleboy/ssh-action@v0.1.2
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
