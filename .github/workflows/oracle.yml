@@ -45,4 +45,4 @@ jobs:
             git clone "https://github.com/AbderrahimSoubaiElidrissi/cicd-playaround" nextjs 2> /dev/null || (cd nextjs ; git pull)
             cd nextjs && npm install
             npm run build 
-            npm serve
+            npm run serve
