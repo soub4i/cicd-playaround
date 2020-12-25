@@ -1,0 +1,41 @@
+name: Deploy To Oracle via SSH
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build
+    # - run: npm test
+    - name: Copying files to server
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            mkdir -p ~/apps/
+            cd ~/apps/
+            killall node
+            git clone "https://github.com/AbderrahimSoubaiElidrissi/cicd-playaround" "nextjs" 2> /dev/null || (cd "nextjs" ; git pull)
+            cd nextjs && npm install
+            npm run build 
+            npm start
