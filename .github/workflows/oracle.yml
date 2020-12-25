@@ -22,10 +22,10 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-    test:
-      runs-on: ubuntu-20.04
-      steps:
-        - run: echo "This is test job"
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: echo "This is test job"
 
   deploy:
     runs-on: ubuntu-20.04
