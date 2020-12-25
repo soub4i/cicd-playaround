@@ -42,7 +42,7 @@ jobs:
           script: |
             mkdir -p ~/apps/
             cd ~/apps/
-            git clone "https://github.com/AbderrahimSoubaiElidrissi/cicd-playaround" nextjs 2> /dev/null || (cd nextjs ; git pull)
+            git clone "https://github.com/AbderrahimSoubaiElidrissi/cicd-playaround" nextjs 2> /dev/null || (cd nextjs ; git pull origin main)
             cd nextjs && npm install
             npm run build 
             npm run serve
