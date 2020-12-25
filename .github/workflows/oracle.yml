@@ -32,7 +32,7 @@ jobs:
             mkdir -p ~/apps/
             cd ~/apps/
             pkill -9 node
-            git clone "https://github.com/AbderrahimSoubaiElidrissi/cicd-playaround" "nextjs" 2> /dev/null || (cd "nextjs" ; git pull)
+            git clone "https://github.com/AbderrahimSoubaiElidrissi/cicd-playaround" nextjs 2> /dev/null || (cd nextjs ; git pull)
             cd nextjs && npm install
             npm run build 
             npm start
