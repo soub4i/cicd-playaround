@@ -25,7 +25,10 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - run: echo "This is test job"
+      - uses: actions/checkout@v2
+      - name: Unit testing
+      - run: npm ci
+      - run: npm run test
 
   deploy:
     runs-on: ubuntu-20.04
